@@ -13,8 +13,14 @@
             <div class="logo">
                 <span>Direnç <strong>Elektrik</strong></span>
             </div>
+            <!-- Hamburger Menü Butonu (mobil için) -->
+            <button class="menu-toggle" aria-label="Menüyü Aç/Kapat">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
             <nav>
-                <ul>
+                <ul class="menu-list">
                     <li><a href="#anasayfa">Ana Sayfa</a></li>
                     <li><a href="#hakkimizda">Hakkımızda</a></li>
                     <li><a href="#hizmetler">Hizmetler</a></li>
@@ -25,22 +31,32 @@
     </header>
     
     <section id="anasayfa" class="hero section-fade">
+      <!-- Slayt için iki arka plan div'i -->
+      <div class="hero-bg hero-bg-1"></div>
+      <div class="hero-bg hero-bg-2"></div>
       <div class="hero-content">
-        <h1>Direnç Elektrik ile Güç Elinizde!</h1>
-        <p>Elektrik arızalarınızda hızlı, güvenilir ve profesyonel çözümler. 7/24 kesintisiz servis, uygun fiyat avantajı ve müşteri memnuniyeti garantisiyle yanınızdayız.</p>
-        <a href="#iletisim" class="hero-btn">Ücretsiz Teklif Al</a>
-        <div class="hero-highlights">
-          <div class="highlight">
-            <span>⚡</span>
-            <div>Hızlı Müdahale</div>
+        <div class="hero-flex">
+          <div class="hero-main">
+            <h1>Direnç Elektrik ile Güç Elinizde!</h1>
+            <p>Elektrik arızalarınızda hızlı, güvenilir ve profesyonel çözümler. 7/24 kesintisiz servis, uygun fiyat avantajı ve müşteri memnuniyeti garantisiyle yanınızdayız.</p>
+            <a href="#iletisim" class="hero-btn">Ücretsiz Teklif Al</a>
+            <div class="hero-highlights">
+              <div class="highlight">
+                <span>⚡</span>
+                <div>Hızlı Müdahale</div>
+              </div>
+              <div class="highlight">
+                <span>🛠️</span>
+                <div>Uzman Kadro</div>
+              </div>
+              <div class="highlight">
+                <span>📞</span>
+                <div>7/24 Destek</div>
+              </div>
+            </div>
           </div>
-          <div class="highlight">
-            <span>🛠️</span>
-            <div>Uzman Kadro</div>
-          </div>
-          <div class="highlight">
-            <span>📞</span>
-            <div>7/24 Destek</div>
+          <div class="hero-services-list">
+            <!-- JS ile eklenecek hizmet başlıkları -->
           </div>
         </div>
       </div>
@@ -235,7 +251,7 @@ Bugün olduğu gibi yarın da, kaliteli işçilik ve güvenilir hizmet anlayış
                     <strong>Email:</strong> <a href="mailto:info@direncelektrik.com">info@direncelektrik.com</a>
                 </div>
                 <div>
-                    <strong>Adres:</strong> Kemalpaşa, Manolya Sk. No:9, 16400 İnegöl/Bursa
+                    <strong>Adres:</strong> Turgutalp mahallesi Kemalettin Sami paşa caddesi no91A İnegöl/Bursa
                 </div>
             </div>
             <div class="contact-flex">
@@ -258,6 +274,89 @@ Bugün olduğu gibi yarın da, kaliteli işçilik ve güvenilir hizmet anlayış
         </div>
     </footer>
     <script>
+    // Hamburger menü
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuList = document.querySelector('.menu-list');
+    menuToggle.addEventListener('click', function() {
+        menuList.classList.toggle('open');
+        menuToggle.classList.toggle('active');
+    });
+    document.querySelectorAll('.menu-list a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuList.classList.remove('open');
+        menuToggle.classList.remove('active');
+      });
+    });
+
+    // Hero arka plan yandan kayan slayt
+    const totalImages = 19;
+    let current = 1;
+    let next = 2;
+    const bg1 = document.querySelector('.hero-bg-1');
+    const bg2 = document.querySelector('.hero-bg-2');
+    let showingFirst = true;
+
+    bg1.style.backgroundImage = `url('${current}.jpeg')`;
+    bg1.classList.add('active');
+    bg2.style.backgroundImage = `url('${next}.jpeg')`;
+
+    function slideHeroBg() {
+      if (showingFirst) {
+        bg2.style.backgroundImage = `url('${next}.jpeg')`;
+        bg2.classList.add('slide-in');
+        bg1.classList.add('slide-out');
+        setTimeout(() => {
+          bg2.classList.remove('slide-in');
+          bg2.classList.add('active');
+          bg1.classList.remove('active', 'slide-out');
+          current = next;
+          next = next >= totalImages ? 1 : next + 1;
+          bg1.style.backgroundImage = `url('${next}.jpeg')`;
+          showingFirst = false;
+        }, 1100);
+      } else {
+        bg1.style.backgroundImage = `url('${next}.jpeg')`;
+        bg1.classList.add('slide-in');
+        bg2.classList.add('slide-out');
+        setTimeout(() => {
+          bg1.classList.remove('slide-in');
+          bg1.classList.add('active');
+          bg2.classList.remove('active', 'slide-out');
+          current = next;
+          next = next >= totalImages ? 1 : next + 1;
+          bg2.style.backgroundImage = `url('${next}.jpeg')`;
+          showingFirst = true;
+        }, 1100);
+      }
+    }
+    setInterval(slideHeroBg, 6000);
+
+    // Hero hizmet başlıklarını animasyonlu ekle
+    const heroServices = [
+      "Daire Tesisatı",
+      "Makina Arızası",
+      "LED Spot Aydınlatma Dekarasyon",
+      "Fabrika Kurulumu",
+      "AG, OG, YG Hat Arızaları",
+      "Plan Proje Taahhüt",
+      "Görüntülü ve Konuşmalı Ev Sistemleri",
+      "Elektrikli Araç Şarj İstasyon Kurulumu",
+      "Elektrik Tesisatı Bakım ve Yenileme",
+      "İnternet Kablo Çekimi ve Arızaları",
+      "Avize Montajı",
+      "Çevre Aydınlatma",
+      "Ofis Tadilatı ve Dekarasyonu"
+    ];
+    const heroServicesList = document.querySelector('.hero-services-list');
+    heroServices.forEach((text, i) => {
+      const item = document.createElement('div');
+      item.className = "hero-service-item";
+      item.textContent = text;
+      item.style.animationDelay = (i * 0.13 + 0.2) + "s";
+      heroServicesList.appendChild(item);
+    });
+
+    // Fade-in bölümler
     document.addEventListener("DOMContentLoaded", function() {
       const sections = document.querySelectorAll('.section-fade');
       const revealOnScroll = () => {
