@@ -31,7 +31,6 @@
     </header>
     
     <section id="anasayfa" class="hero section-fade">
-      <!-- Slayt için iki arka plan div'i -->
       <div class="hero-bg hero-bg-1"></div>
       <div class="hero-bg hero-bg-2"></div>
       <div class="hero-content">
@@ -274,21 +273,20 @@ Bugün olduğu gibi yarın da, kaliteli işçilik ve güvenilir hizmet anlayış
         </div>
     </footer>
     <script>
-const menuToggle = document.querySelector('.menu-toggle');
+    // Hamburger menü
+    const menuToggle = document.querySelector('.menu-toggle');
     const menuList = document.querySelector('.menu-list');
     menuToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      menuList.classList.toggle('open');
-      menuToggle.classList.toggle('active');
+        e.stopPropagation();
+        menuList.classList.toggle('open');
+        menuToggle.classList.toggle('active');
     });
-    // Menü açıkken bir linke tıklanırsa menü kapanır
     document.querySelectorAll('.menu-list a').forEach(link => {
       link.addEventListener('click', () => {
         menuList.classList.remove('open');
         menuToggle.classList.remove('active');
       });
     });
-    // Menü dışına tıklanırsa menü kapanır
     document.addEventListener('click', function(e) {
       if(menuList.classList.contains('open')) {
         if (!menuList.contains(e.target) && !menuToggle.contains(e.target)) {
@@ -297,6 +295,7 @@ const menuToggle = document.querySelector('.menu-toggle');
         }
       }
     });
+
     // Hero arka plan yandan kayan slayt
     const totalImages = 19;
     let current = 1;
