@@ -609,7 +609,7 @@ footer {
     .hero-service-item {
         font-size: 0.82rem;
         min-width: 60px;
-        max-width: 99vw;
+        max-width: 200vw;
         flex: 0 1 46%;
         padding: 0.21em 0.5em;
     }
