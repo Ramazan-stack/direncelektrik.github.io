@@ -521,69 +521,62 @@ footer {
         max-width: 98vw;
         padding: 0 2vw;
     }
+    .logo {
+        margin-left: 20px;
+        margin-bottom: 0.5rem;
+    }
 .header-flex {
-        flex-direction: row;
-        align-items: center;
-        gap: 0.7rem;
-        min-height: 68px;
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: unset;
     }
   .menu-toggle {
         display: none !important;
     }
-    nav {
+nav {
         position: static;
-        z-index: auto;
         width: 100%;
+        margin-left: 0;
+        z-index: auto;
     }
     nav ul.menu-list {
         display: flex !important;
         flex-wrap: wrap;
         flex-direction: row;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         gap: 0.7rem 1.2rem;
         position: static;
         width: 100%;
-        background: none;
-        box-shadow: none;
+        background: none !important;
+        box-shadow: none !important;
         border-radius: 0;
         padding: 0.2rem 0 0.2rem 0;
-        margin: 0;
+        margin: 0 0 0 12px;
         z-index: auto;
         animation: none;
     }
     nav ul.menu-list li {
-        width: 48%;
+        width: auto;
         text-align: center;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0;
         padding: 0;
     }
-    nav ul.menu-list li:nth-child(1),
-    nav ul.menu-list li:nth-child(2) {
-        order: 1;
-        margin-bottom: 0;
-        margin-top: 0.3rem;
-    }
-    nav ul.menu-list li:nth-child(3),
-    nav ul.menu-list li:nth-child(4) {
-        order: 2;
-        margin-bottom: 0.3rem;
-    }
     nav ul.menu-list li a {
-        width: 100%;
-        display: block;
-        padding: 0.8rem 0.1rem;
+        width: auto;
+        display: inline-block;
+        padding: 0.8rem 0.7rem;
         font-size: 1.07rem;
         color: #222;
-        border-radius: 10px;
-        background: #fff8f0;
-        border: 1px solid #ff7300;
-        margin: 0 auto;
+        border-radius: 7px;
+        background: none !important;
+        border: none;
+        margin: 0;
         transition: background 0.17s, color 0.17s;
     }
     nav ul.menu-list li a:hover,
     nav ul.menu-list li a.active {
-        background: #ff7300;
+        background: #ff7300 !important;
         color: #fff;
     }
     .hero {
