@@ -600,18 +600,24 @@ footer {
         text-align: center;
     }
     .hero-services-list {
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column !important;
+        align-items: flex-start;
+        gap: 0.12rem 0;
         padding: 0.2rem 0 0.2rem 0;
-        gap: 0.13rem 0.19rem;
-        justify-content: center;
+        justify-content: flex-start;
     }
     .hero-service-item {
-        font-size: 0.82rem;
-        min-width: 60px;
-        max-width: 200vw;
-        flex: 0 1 46%;
-        padding: 0.21em 0.5em;
+        width: auto;               /* Otomatik genişlik */
+        min-width: 0;
+        max-width: 95vw;           /* Taşmayı önle */
+        font-size: 0.95rem;
+        padding: 0.34em 0.8em;
+        white-space: nowrap;       /* Tek satırda tut */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;     /* Kutu, içeriğe göre genişlesin */
+        margin-right: 0;           /* Yan yana olmasın */
+        box-sizing: border-box;
     }
     .contact-flex {
         flex-direction: column;
